@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="logAndPass">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="logIn" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="pass" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastName" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameProd" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="deliveryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Хранилище DataBaseModelContainer">
+    <EntitySet Name="logAndPass" EntityType="Self.logAndPass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
