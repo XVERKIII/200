@@ -16,8 +16,8 @@ namespace Store
     {
         public int id { get; set; }
         public string nameProd { get; set; }
-        public string type { get; set; }
-        public int price { get; set; }
+        public int typeID { get; set; }
+        public double price { get; set; }
         public int quantity { get; set; }
         public System.DateTime deliveryDate { get; set; }
     }

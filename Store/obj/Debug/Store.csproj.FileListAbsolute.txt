@@ -28,3 +28,7 @@ D:\Store\Store\obj\Debug\App.baml
 D:\Store\Store\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Store\Store\obj\Debug\PageLogIn\Registration.g.cs
 D:\Store\Store\obj\Debug\PageLogIn\Registration.baml
+D:\Store\Store\obj\Debug\PageProduct\EditPage.g.cs
+D:\Store\Store\obj\Debug\PageProduct\EditPage.baml
+D:\Store\Store\obj\Debug\PageProduct\AddPage.g.cs
+D:\Store\Store\obj\Debug\PageProduct\AddPage.baml

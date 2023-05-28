@@ -16,13 +16,32 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nameProd" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="typeID" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
     <Property Name="quantity" Type="Int32" Nullable="false" />
     <Property Name="deliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="typeOfProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="typeProduct" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityContainer Name="DataBaseEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="logAndPass" EntityType="Self.logAndPass" />
     <EntitySet Name="product" EntityType="Self.product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="typeOfProduct" EntityType="Self.typeOfProduct" />
   </EntityContainer>
 </Schema>

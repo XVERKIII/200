@@ -34,7 +34,6 @@ namespace Store.PageLogIn
             {
                 MessageBox.Show("Введите логин и пароль");
             }
-            //проверка на текст в текстбоксе и базой логинИпароль это таблица
             else if (DataBaseEntities.GetEntities().logAndPass.Any(x=>x.logIn == log.Text && x.pass == pass.Text))
             {
                 Manager.frameManager.Navigate(PageProduct.ProductPage.GetPage());

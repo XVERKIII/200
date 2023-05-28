@@ -9,6 +9,106 @@
       Title="ProductPage">
 
     <Page.Resources>
+        <Style TargetType="Button" x:Key="topBtn">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0 4 0 0" BorderBrush="#FF6481D0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,5.5" EndPoint="1,0.5">
+                                <GradientStop Color="#FF304BA8" Offset="0"/>
+                                <GradientStop Color="#FF5869A5" Offset="3"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="btnRef" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0 0 0 0"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,5.5" EndPoint="1,0.5">
+                        <GradientStop Color="#FF1D233D" Offset="0"/>
+                        <GradientStop Color="#FF1D233D" Offset="3"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="4 4 0 0" BorderBrush="#FF6481D0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SearchSt" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0 0 0 2"/>
+            <Setter Property="Width" Value="320"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="borderTxt" 
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="0"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                SnapsToDevicePixels="True"
+                                Opacity="{TemplateBinding Opacity}">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              Focusable="False"
+                                              VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                              Padding="{TemplateBinding Padding}"
+                                              BorderThickness="0"/>
+                                <Label x:Name="waterMarks"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                       Visibility="Collapsed"
+                                       Foreground="#FF8CA5FF"
+                                       Content="{TemplateBinding Tag}"
+                                       Margin='6 0 0 0'/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility"
+                                        TargetName="waterMarks"
+                                        Value="Visible"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <local:TypeIDConverter x:Key="TypeConverter"/>
         <Style TargetType="Button" x:Key="btnMenu">
             <Setter Property="Height" Value="20"/>
             <Setter Property="Width" Value="70"/>
@@ -31,9 +131,7 @@
                 <Trigger Property="IsFocused" Value="True">
                     <Setter Property="Background" Value="Transparent"/>
                 </Trigger>
-
             </Style.Triggers>
-
         </Style>
 
         <Style TargetType="StackPanel" x:Key="stackP">
@@ -46,11 +144,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style TargetType="Label" x:Key="lblNameUser">
-            <Setter Property="HorizontalContentAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
 
-        </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -61,34 +155,67 @@
             <ColumnDefinition Width="75*"/>
             <ColumnDefinition Width="729*"/>
         </Grid.ColumnDefinitions>
+
         <StackPanel Grid.Row="1" Grid.Column="0" Background="Transparent" HorizontalAlignment="Left" Width="75">
-            <Button  Height="80" Width="75" Style="{StaticResource btnMenu}">
-                <Image Source="/Store;component/Image/hand_tool_tools_work_building_repair_construction_construction_tools-91_icon-icons.com_60418.png" Height="58" Width="58"/>
+            <Button x:Name="Tools" Height="80" Width="75" Style="{StaticResource btnMenu}" Click="Tools_Click">
+                <Image Source="/Store;component/Image/hand_tool_tools_work_building_repair_construction_construction_tools-91_icon-icons.com_60418.png" Height="58" Width="58">
+                    <Image.OpacityMask>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Image.OpacityMask>
+                </Image>
             </Button>
-            <Button  Height="80" Width="75" Style="{StaticResource btnMenu}">
+            <Button x:Name="wallpaper" Height="80" Width="75" Style="{StaticResource btnMenu}" Click="wallpaper_Click">
                 <Image Source="/Store;component/Image/hand_tool_tools_work_building_repair_construction_construction_tools-51_icon-icons.com_60409.png" RenderTransformOrigin="0.5,0.5" Height="58" Width="58"/>
             </Button>
-            <Button  Height="80" Width="75" Style="{StaticResource btnMenu}">
+            <Button x:Name="tech"  Height="80" Width="75" Style="{StaticResource btnMenu}" Click="tech_Click">
                 <Image Source="/Store;component/Image/hand_tool_tools_work_building_repair_construction_construction_tools-83_icon-icons.com_60392.png" Height="58" Width="58"/>
             </Button>
-            <Button  Height="80" Width="75" Style="{StaticResource btnMenu}">
+            <Button x:Name="mixture"  Height="80" Width="75" Style="{StaticResource btnMenu}" Click="mixture_Click">
                 <Image Source="/Store;component/Image/hand_tool_tools_work_building_repair_construction_construction_tools-96_icon-icons.com_60405.png" Height="58" Width="58"/>
             </Button>
-            <Button x:Name="btnClose" Content="X" Height="74" Style="{StaticResource btnMenu}" Click="btnClose_Click"/>
+            <Button x:Name="btnClose" Height="74" Width="75" Style="{StaticResource btnMenu}" Click="btnClose_Click">
+                <Image Source="/Store;component/Image/icons8-выключение-сервера-50.png" Height="58" Width="58"/>
+            </Button>
         </StackPanel>
-        <StackPanel Grid.Column="1" VerticalAlignment="Top" Height="60" Width="750" Style="{StaticResource stackP}">
-            <Label Name="lblUser" Style="{StaticResource lblNameUser}" FontSize="25" Foreground="#FF8E9ABA" VerticalAlignment="Top" Width="300" Height="50" HorizontalAlignment="Right"/>
-            <Separator HorizontalAlignment="Right" Width="300" VerticalAlignment="Bottom"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="60" Width="725" Style="{StaticResource stackP}">
+            <Button x:Name="addBtn" Style="{StaticResource ResourceKey=topBtn}" Content="Добавить поставку" Width="200" HorizontalAlignment="Left" Height="60" Click="addBtn_Click"/>
+            <Button x:Name="delBtn" Style="{StaticResource ResourceKey=topBtn}" Content="Удалить поставку"  Width="200" HorizontalAlignment="Left" Height="60" Click="delBtn_Click"/>
+            <TextBox x:Name="search" Foreground="AliceBlue" FontSize="20" Tag="Поиск..." Style="{StaticResource ResourceKey=SearchSt}"  TextChanged="search_TextChanged"/>
         </StackPanel>
-        <DataGrid  Grid.Column="1" Grid.Row="1" x:Name="dataGrid" IsReadOnly="True" >
+        <Button x:Name="refresh" Click="refresh_Click" Width="auto" Height="auto" Style="{StaticResource ResourceKey=btnRef}" Cursor="Hand">
+            <Image Source="/Store;component/Image/icons8-доступные-обновления-50.png" Height="58" Width="58">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/Store;component/Image/icons8-доступные-обновления-50.png"/>
+                </Image.OpacityMask>
+            </Image>
+        </Button>
+        <DataGrid AutoGenerateColumns="False" Foreground="Black" 
+                  Grid.Column="1" Grid.Row="1" x:Name="dataGrid" IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn Width="150" Header="name" Binding="{Binding nameProd}"/>
-                <DataGridTextColumn Width="150" Header="type" Binding="{Binding type}"/>
-                <DataGridTextColumn Width="150" Header="price" Binding="{Binding price}"/>
-                <DataGridTextColumn Width="150" Header="quantity" Binding="{Binding quantity}"/>
-                <DataGridTextColumn Width="150" Header="deliveryData" Binding="{Binding deliveryData}"/>
+                <DataGridTextColumn Header="Наименование" 
+                                    Binding="{Binding nameProd}" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="100" Header="Тип" Binding="{Binding typeID, Converter={StaticResource TypeConverter}}"/>
+                <DataGridTextColumn Width="50" Header="Цена" Binding="{Binding price}"/>
+                <DataGridTextColumn Width="100" Header="Количество" Binding="{Binding quantity}"/>
+                <DataGridTextColumn Width="150" Header="Дата доставки" Binding="{Binding deliveryDate, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="editBtn" 
+                                    Click="editBtn_Click" Background="#FF203777" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
-            
         </DataGrid>
     </Grid>
 </Page>

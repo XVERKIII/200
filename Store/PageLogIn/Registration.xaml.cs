@@ -29,17 +29,16 @@ namespace Store.PageLogIn
             DataContext = registration;
         }
         public static Registration GetRegistration() => page;
-        //проверка при регистрации Reg приписка это текстбокс
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             if (logReg.Text != string.Empty
                 && passReg.Text != string.Empty
                 && firstNameReg.Text != string.Empty
                 && lastNameReg.Text != string.Empty
-                && DataBaseEntities.GetEntities().logAndPass.Any(x=>x.logIn != logReg.Text && x.pass != passReg.Text))
-               
+                && DataBaseEntities.GetEntities().logAndPass.
+                Any(x => x.logIn != logReg.Text && x.pass != passReg.Text))
+
             {
-                //tryPass это лабле ниче важного
                 if (passReg.Text.Length < 8)
                 {
                     MessageBox.Show("пароль должен быть больше 8 символов!");
@@ -53,6 +52,11 @@ namespace Store.PageLogIn
                     tryPass.Visibility = Visibility.Collapsed;
                 }
             }
+            else
+            {
+                MessageBox.Show("Заполните поля");
+                return;
+            }
             try
             {
                     DataBaseEntities.GetEntities().SaveChanges();
@@ -63,6 +67,11 @@ namespace Store.PageLogIn
             {
                 MessageBox.Show(ex.Message.ToString()); 
             }
+        }
+
+        private void btnLog_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.frameManager.Navigate(LogIn.GetPage());
         }
     }
 }

@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Store
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         
@@ -27,8 +24,8 @@ namespace Store
             InitializeComponent();
             GetWindow = this;
             Manager.frameManager = mainFrame;
-            //mainFrame.Content = PageLogIn.LogIn.GetPage();
-            mainFrame.Navigate(PageLogIn.LogIn.GetPage());
+            //mainFrame.Navigate(PageLogIn.LogIn.GetPage());
+            mainFrame.Navigate(PageProduct.ProductPage.GetPage());
         }
     }
 }

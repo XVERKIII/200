@@ -16,13 +16,32 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nameProd" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="type" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="typeID" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="deliveryDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="typeOfProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typeProduct" Type="nchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityContainer Name="Хранилище DataBaseModelContainer">
     <EntitySet Name="logAndPass" EntityType="Self.logAndPass" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="typeOfProduct" EntityType="Self.typeOfProduct" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

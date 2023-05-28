@@ -17,12 +17,12 @@
         </Grid.RowDefinitions>
         <Separator VerticalAlignment="Bottom" Width="300" />
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Height="207" Width="400" >
-            <TextBox x:Name="log" Tag="LogIn" Margin="0 20 0 0" Background="Transparent" BorderThickness="2"/>
-            <TextBox x:Name="pass" Tag="Password"  Margin="0 20 0 0" Background="Transparent" BorderThickness="2"/>
+            <TextBox x:Name="log" Tag="Логин..." Margin="0 20 0 0" Background="Transparent" BorderThickness="2"/>
+            <TextBox x:Name="pass" Tag="Пароль..."  Margin="0 20 0 0" Background="Transparent" BorderThickness="2"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="300">
-            <Button Content="logIn" x:Name="btnLogIn" Click="btnLogIn_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Content="Registration" x:Name="btnReg" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnReg_Click"/>
+            <Button Content="Войти" x:Name="btnLogIn" Click="btnLogIn_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Content="Регистрация" x:Name="btnReg" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnReg_Click"/>
         </StackPanel>
     </Grid>
 </Page>

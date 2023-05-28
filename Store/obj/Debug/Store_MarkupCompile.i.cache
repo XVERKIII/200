@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Store\Store\App.xaml
-4-1447827334
+6-2145110558
 21750853300
-15-955964029
+19-2052071507
 181614284198
-MainWindow.xaml;PageLogIn\LogIn.xaml;PageLogIn\Registration.xaml;PageProduct\ProductPage.xaml;
+MainWindow.xaml;PageLogIn\LogIn.xaml;PageLogIn\Registration.xaml;PageProduct\AddPage.xaml;PageProduct\EditPage.xaml;PageProduct\ProductPage.xaml;
 
 True
 
